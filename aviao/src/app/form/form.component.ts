@@ -30,7 +30,7 @@ export class FormComponent implements OnInit{
     let nome = this.novoItem.controls['nome'].value;
     let peso = this.novoItem.controls['peso'].value;
     let valor = this.novoItem.controls['valor'].value;
-    this.sairModal({nome, peso, valor, excluir: true});
+    this.sairModal({nome, peso, valor});
   }
 
   private sairModal(item: Item): void {

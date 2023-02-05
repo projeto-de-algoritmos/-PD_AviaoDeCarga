@@ -8,17 +8,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TabelaComponent } from './tabela/tabela.component';
 import { FormComponent } from './form/form.component';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TabelaComponent,
-    FormComponent
+    FormComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { FormComponent } from './form/form.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatExpansionModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

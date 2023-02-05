@@ -1,16 +1,24 @@
-<div class="flex flex-col my-4 ml-32">
-  <div class="flex justify-start">
+<div class="screen flex flex-col items-center mt-4 mx-32">
+
+  <app-intro></app-intro>
+  
+  <app-tabela 
+    [itens]="itens"
+    (emitExcluir)="deletaItem($event)"
+  ></app-tabela>
+
+  <div class="flex flex-row gap-4 justify-end mt-4">
+    <button
+      class="bg-yellow-500 text-black px-2 py-1 rounded-lg"
+      (click)="selecionarItens()"
+    >Auto-selecionar Itens</button>
 
     <button
       class="bg-blue-700 text-white px-2 py-1 rounded-lg"
       (click)="abrirForm()"
     >Inserir novo item</button>
   </div>
-  
-  <app-tabela 
-    [itens]="itens"
-    (emitExcluir)="deletaItem($event)"
-  ></app-tabela>
+
 </div>
 
 <div *ngIf="dialogOpen" class="block bg-black opacity-50 absolute top-0 z-1 w-screen h-screen"></div>

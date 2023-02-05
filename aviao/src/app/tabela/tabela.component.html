@@ -1,7 +1,7 @@
 <div class="text-lg font-semibold text-blue-600 my-5">
-    Itens já adicionados
+    Itens já adicionados no avião
 </div>
-<div class="tabela grid grid-cols-5">
+<div class="tabela grid grid-cols-5 max-h-56 overflow-y-scroll">
     <div class="col-span-2 flex flex-col justify-center border-t-2 border-b-2 border-gray-600">
         <span class="flex justify-center font-medium">Nome</span>
         <div *ngFor="let item of itens"
@@ -24,12 +24,15 @@
         </div>
     </div>
     <div class="flex flex-col border-t-2 border-b-2 border-gray-600">
-        <span class="flex justify-center font-medium ">Excluir</span>
+        <span class="flex justify-center font-medium ">Remover</span>
         <div *ngFor="let item of [].constructor(itens.length); let i = index"
             class="flex justify-center border-t-2 border-gray-600 h-8 items-center">
-            <button *ngIf="itens[i].excluir" (click)="delete(i)">
+            <button (click)="delete(i)">
                 <mat-icon class="mt-3" style="font-size: 20px;">delete</mat-icon>  
             </button>
         </div>
     </div>
 </div>
+<div 
+    [class]="getColor()"
+> Carga total: {{cargaTotal}} Kg/500 Kg </div>

@@ -1,3 +1,7 @@
 .disable-backdrop {
     pointer-events: none;
 }
+
+.screen {
+    height: 97vh;
+}

@@ -12,15 +12,13 @@ export class AppComponent implements OnInit {
 
   itens: Item[] = [
     {
-      nome: 'item 1',
+      nome: 'carga 1',
       peso: 10,
       valor: 25.50,
-      excluir: false,
     },{
-      nome: 'item 2',
+      nome: 'carga 2',
       peso: 5,
       valor: 10,
-      excluir: false,
     },
   ];
 
@@ -31,6 +29,14 @@ export class AppComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+
+    for(let i=3; i<1000; i++){
+      this.itens.push({
+        nome: `carga ${i}`,
+        peso: 10,
+        valor: 25.50,
+      })
+    }
     
   }
 
@@ -40,8 +46,8 @@ export class AppComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '400px';
     dialogConfig.position = {
-      left: '38%',
-      top: '-5%'
+      left: '35%',
+      top: '-40rem'
     };
     dialogConfig.disableClose = true;
     dialogConfig.backdropClass = 'disable-backdrop'
@@ -60,4 +66,11 @@ export class AppComponent implements OnInit {
   deletaItem(index: any) {
     this.itens.splice(index, 1);
   }
+
+  selecionarItens(){
+
+    console.log("selecionar");
+    
+  }
+
 }
