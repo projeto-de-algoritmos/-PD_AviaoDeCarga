@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   ];
 
   dialogOpen = false;
+  panelOpenState = false;
 
   constructor(
     private _dialog: MatDialog,
@@ -38,6 +39,14 @@ export class AppComponent implements OnInit {
     //   })
     // }
     
+  }
+
+  updatePanel(event: any){
+    this.panelOpenState = event
+  }
+
+  setPanel() {
+      this.panelOpenState = false;
   }
 
   abrirForm() {
@@ -68,6 +77,7 @@ export class AppComponent implements OnInit {
   }
 
   selecionarItens(){
+    this.setPanel();
 
     console.log("selecionar");
     

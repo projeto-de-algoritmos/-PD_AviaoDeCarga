@@ -1,6 +1,9 @@
-<div class="screen flex flex-col items-center mt-4 mx-32">
+<div class="screen flex flex-col items-center my-4 mx-32">
 
-  <app-intro></app-intro>
+  <app-intro 
+    [panelOpenState]="panelOpenState"
+    (emitPanel)="updatePanel($event)"
+    ></app-intro>
   
   <app-tabela 
     [itens]="itens"
@@ -15,7 +18,7 @@
 
     <button
       class="bg-blue-700 text-white px-2 py-1 rounded-lg"
-      (click)="abrirForm()"
+      (click)="setPanel(); abrirForm()"
     >Inserir novo item</button>
   </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-intro',
@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroComponent implements OnInit{
 
-  panelOpenState = false;
+  @Input() panelOpenState = false;
+  @Output() emitPanel = new EventEmitter<any>()
 
   constructor() {}
 
   ngOnInit(): void {
     
+  }
+
+  emitePanel(){
+    this.emitPanel.emit(true);
   }
 
 }
