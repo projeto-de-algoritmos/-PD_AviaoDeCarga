@@ -15,7 +15,7 @@ export class FormComponent implements OnInit{
   constructor(
     public dialogRef: MatDialogRef<FormComponent>,
     private _fb: FormBuilder,
-  ) { }
+  ) { dialogRef.disableClose = true}
 
   ngOnInit(): void {
     this.novoItem = this._fb.group({
@@ -30,7 +30,7 @@ export class FormComponent implements OnInit{
     let nome = this.novoItem.controls['nome'].value;
     let peso = this.novoItem.controls['peso'].value;
     let valor = this.novoItem.controls['valor'].value;
-    this.sairModal({nome, peso, valor});
+    this.sairModal({nome, peso, valor, excluir: true});
   }
 
   private sairModal(item: Item): void {

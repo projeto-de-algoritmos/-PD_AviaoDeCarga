@@ -17,18 +17,18 @@
         </div>
     </div>
     <div class="flex flex-col justify-center border-t-2 border-b-2 border-gray-600">
-        <span class="flex justify-center font-medium">Valor (R$)</span>
+        <span class="flex justify-center font-medium">Valor</span>
         <div *ngFor="let item of itens"
         class="flex justify-center border-t-2 border-gray-600 h-8 items-center">
-            {{item.valor}}
+            {{item.valor | currency: 'BRL': 'symbol': '2.2-2'}}
         </div>
     </div>
     <div class="flex flex-col border-t-2 border-b-2 border-gray-600">
         <span class="flex justify-center font-medium ">Excluir</span>
         <div *ngFor="let item of [].constructor(itens.length); let i = index"
             class="flex justify-center border-t-2 border-gray-600 h-8 items-center">
-            <button (click)="delete(i)">
-                <mat-icon style="font-size: 20px;">delete</mat-icon>  
+            <button *ngIf="itens[i].excluir" (click)="delete(i)">
+                <mat-icon class="mt-3" style="font-size: 20px;">delete</mat-icon>  
             </button>
         </div>
     </div>

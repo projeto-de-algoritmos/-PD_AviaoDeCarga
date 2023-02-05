@@ -14,7 +14,7 @@ export class TabelaComponent implements OnInit{
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.itens);
+    
   }
 
   delete(index:any) {
