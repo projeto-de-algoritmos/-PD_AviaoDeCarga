@@ -22,6 +22,9 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  maxValor: string = "";
+  itensRemovidos: string = "";
+
   dialogOpen = false;
   panelOpenState = false;
 
@@ -67,6 +70,8 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(( item ) => {
       if(item){
         this.itens.push(item)
+        this.maxValor = "";
+        this.itensRemovidos = "";
       }
 
       this.dialogOpen = false
@@ -75,6 +80,8 @@ export class AppComponent implements OnInit {
 
   deletaItem(index: any) {
     this.itens.splice(index, 1);
+    this.maxValor = "";
+    this.itensRemovidos = "";
   }
   
   knapsack(itens: Item[], capacidade: number): { valor: number, itens: Item[] } {
@@ -107,8 +114,18 @@ export class AppComponent implements OnInit {
   selecionarItens(){
     this.setPanel();
 
+    let itensRemovidos: string[] = [];
     let aux = this.knapsack(this.itens, 500);
-    console.log(aux);
+
+    this.maxValor = `Valor máximo: R$${aux.valor}`;
+    for(let i = 0; i <this.itens.length; i++){
+      if(aux.itens.indexOf(this.itens[i]) == -1)
+        itensRemovidos.push(" " + this.itens[i].nome);
+    }
+    if(itensRemovidos.length > 0)
+      this.itensRemovidos = `Itens não selecionados: ${itensRemovidos}.`
+    console.log(this.itensRemovidos);
+    this.itens = aux.itens;
   }
 
 }
