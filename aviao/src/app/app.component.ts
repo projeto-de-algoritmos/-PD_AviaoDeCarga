@@ -65,8 +65,9 @@ export class AppComponent implements OnInit {
 
     const dialogRef = this._dialog.open(FormComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(( item ) => {
-      if(item)
+      if(item){
         this.itens.push(item)
+      }
 
       this.dialogOpen = false
     });
@@ -75,12 +76,39 @@ export class AppComponent implements OnInit {
   deletaItem(index: any) {
     this.itens.splice(index, 1);
   }
+  
+  knapsack(itens: Item[], capacidade: number): { valor: number, itens: Item[] } {
+      const n = itens.length;
+      const opt: number[][] = Array(n + 1).fill(null).map(() => Array(capacidade + 1).fill(0));
+      const itensSelecionados: Item[][][] = Array(n + 1).fill(null).map(() => Array(capacidade + 1).fill(null).map(() => []));
+  
+      for (let i = 1; i <= n; i++) {
+          for (let j = 0; j <= capacidade; j++) {
+              if (itens[i - 1].peso > j) {
+                  opt[i][j] = opt[i - 1][j];
+                  itensSelecionados[i][j] = itensSelecionados[i - 1][j];
+              } else {
+                  const semItem = opt[i - 1][j];
+                  const comItem = Number(opt[i - 1][j - itens[i - 1].peso]) + Number(itens[i - 1].valor);
+                  if (comItem > semItem) {
+                      opt[i][j] = comItem;
+                      itensSelecionados[i][j] = [...itensSelecionados[i - 1][j - itens[i - 1].peso], itens[i - 1]];
+                  } else {
+                      opt[i][j] = semItem;
+                      itensSelecionados[i][j] = itensSelecionados[i - 1][j];
+                  }
+              }
+          }
+      }
+  
+      return { valor: opt[n][capacidade], itens: itensSelecionados[n][capacidade] };
+  }
 
   selecionarItens(){
     this.setPanel();
 
-    console.log("selecionar");
-    
+    let aux = this.knapsack(this.itens, 500);
+    console.log(aux);
   }
 
 }
