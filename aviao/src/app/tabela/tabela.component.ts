@@ -24,7 +24,7 @@ export class TabelaComponent implements OnInit{
   }
 
   getColor(){
-    let soma = this.itens.reduce((total, current) => total + current.peso, 0);
+    let soma = this.itens.reduce((total, current) => Number(total) + Number(current.peso), 0);
     this.cargaTotal = soma;
     return (this.cargaTotal>500) ? 'mt-4 font-medium text-red-500' : 'mt-4 font-medium text-green-700';
   }
