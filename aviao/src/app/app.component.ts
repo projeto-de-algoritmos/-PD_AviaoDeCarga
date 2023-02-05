@@ -30,13 +30,13 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
 
-    for(let i=3; i<1000; i++){
-      this.itens.push({
-        nome: `carga ${i}`,
-        peso: 10,
-        valor: 25.50,
-      })
-    }
+    // for(let i=3; i<1000; i++){
+    //   this.itens.push({
+    //     nome: `carga ${i}`,
+    //     peso: 10,
+    //     valor: 25.50,
+    //   })
+    // }
     
   }
 
