@@ -1,0 +1,42 @@
+<div class="flex flex-col max-w-3xl min-w-160">
+    <header class="flex items-center justify-between h-16 pr-3 pl-6 bg-blue-500 text-on-primary">
+        <h1 class="mt-2 flex items-center justify-center text-xl font-medium text-white">
+            Adicione um item
+        </h1>
+
+        <button mat-button mat-dialog-close class="mat-focus-indicator mat-icon-button mat-button-base" >
+            <span class="mat-button-wrapper">
+                <mat-icon matSuffix class="text-white">close</mat-icon>
+            </span>
+        </button>
+    </header>
+    <form [formGroup]="novoItem" class="flex flex-col mx-4">
+        <div class="flex flex-col w-80 my-2">
+            <mat-form-field appearance="fill">
+                <mat-label class="font-semibold">Nome do item</mat-label>
+                <input class="mt-6" matInput formControlName="nome">
+            </mat-form-field>
+        </div>
+        <div class="flex flex-col w-80 my-2">
+            <mat-form-field appearance="fill">
+                <mat-label class="font-semibold">Peso do item (em kg)</mat-label>
+                <input class="mt-6" matInput formControlName="peso">
+            </mat-form-field>
+        </div>
+        <div class="flex flex-col w-80 my-2">
+            <mat-form-field appearance="fill">
+                <mat-label class="font-semibold">Valor do item (em R$)</mat-label>
+                <input class="mt-6" matInput formControlName="valor">
+            </mat-form-field>
+        </div>
+
+        <div class="flex mt-6 mb-4 self-end">
+            <button class="bg-blue-700 text-white px-2 py-1 rounded-lg"
+            [disabled]="novoItem.invalid"
+            [ngClass]="{'opacity-50': novoItem.invalid}"
+            (click)="adicionar()">
+                Adicionar
+            </button>
+        </div>
+    </form>
+</div>
